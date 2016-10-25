@@ -1,0 +1,113 @@
+$fontFamily: 'Raleway', sans-serif;
+$textLineHeight: 1.7;
+$titleLineHeight: 1.3;
+$textColor: #2c2c2c;
+$lightTextColor: lighten($textColor, 30%);
+$whiteColor: #fff;
+$veryLightColor: darken($whiteColor, 30%);
+$mainColor: #9a6488;
+$coloredText: lighten((saturate($mainColor, 10%)), 5%);
+$secondaryColor: #284e4a;
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin link($color: inherit) {
+	text-decoration: none;
+	color: $color;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+@mixin triangle($height, $borderVisible, $borderInvisible,
+		$color: (lighten($mainColor, 10%))) {
+	$border: $height/2 solid;
+	$colorLight: lighten($color, 15%);
+	border: {
+		@each $borderOne in $borderVisible {
+			#{$borderOne}: $border $color;
+		}
+		@each $borderOne in $borderInvisible {
+			#{$borderOne}: $border transparent;
+		}
+	}
+	@media screen and (max-width: 400px) {
+		@each $borderOne in $borderVisible {
+			border-#{$borderOne}-color: $colorLight;
+		}
+	}
+}
+
+@mixin formElement($width: 0) {
+	box-sizing: border-box;
+	border-radius: 3px;
+	height: 50px;
+	width: $width;
+	font: 300 18px $fontFamily;
+	&:focus {
+		outline: none;
+	}
+}
+
+@mixin input($width, $color: $lightTextColor, $borderColor: $veryLightColor) {
+	padding: 13.5px 0 13.5px 20px;
+	border: 1px solid $borderColor;
+	color: $color;
+	@include formElement($width);
+}
+
+@mixin button($width, $letterSpacing: 0) {
+	border: none;
+	background-color: $mainColor;
+	letter-spacing: $letterSpacing;
+	text-transform: uppercase;
+	color: $whiteColor;
+	cursor: pointer;
+	@include formElement($width);
+}
+
+@mixin verticalAlign($height, $inner) {
+	line-height: $height;
+
+	#{$inner} {
+		line-height: normal;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+@mixin placeholder($color) {
+	&::-moz-placeholder { 
+		color: $color; }
+	&:-moz-placeholder { 
+		color: $color; }
+	&::-webkit-input-placeholder { 
+		color: $color; }
+	&:-ms-input-placeholder { 
+		color: $color; }
+	&::-ms-input-placeholder { 
+		color: $color; }
+	&::placeholder { 
+		color: $color; }
+}
+
+@import "_reset.scss";
+
+body, html {
+	font: 400 16px/#{$textLineHeight} $fontFamily;
+	color: $textColor;
+}
+
+p {
+	color: $lightTextColor;
+}
+
+@import "_header.scss";
+@import "_inform.scss";
+@import "_footer.scss";

@@ -1,0 +1,158 @@
+$headerHeight: 800px;
+$navHeight: 70px;
+$headerHeightSmall: 600px;
+$smallNavHeight: 50px;
+
+#header {
+	background-image: url(images/background.png);
+	background-position: 50% -130px;
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+	height: $headerHeight;
+	@include verticalAlign($headerHeight, '.title');
+
+	@media screen and (max-width: 760px) {
+		height: $headerHeightSmall;
+		background-position: 50% -260px;
+		@include verticalAlign($headerHeightSmall, '.title');
+	}
+
+	nav {
+		@media screen and (max-width: 1000px) {
+			width: 100%;
+			height: $navHeight;
+			background-color: $mainColor;
+			position: fixed;
+			z-index: 1000;
+		}
+
+		@media screen and (max-width: 430px) {
+			height: $smallNavHeight;
+		}
+	}
+
+	ul {
+		position: fixed;
+		z-index: 1000;
+		right: 0;
+		top: 0;
+		padding: 0 50px;
+		line-height: normal;
+		@media screen and (max-width: 1000px) {
+			display: none;
+		}
+		
+		li {
+			display: inline-block;
+
+			a {
+				display: block;	
+				padding: 20px;
+				text-transform: uppercase;
+				font-size: 18px;
+				font-weight: 300;
+				@include link;
+			}
+		}
+	}
+}
+
+.scrolled-page {
+	background-color: $mainColor;
+	color: $whiteColor;
+	padding: 10px 80px !important;
+	@media screen and (max-width: 1440px) {
+		padding: 0 50px !important;
+	}
+
+	a {
+		padding: 20px 30px !important;
+		@media screen and (max-width: 1440px) {
+			padding: 20px !important;
+		}
+	}
+}
+
+.button {
+	height: $navHeight;
+	width: 100%;
+	background: {
+		image: url(images/menu.png);
+		repeat: no-repeat;
+		position: 95% 50%;
+	}
+	float: right;
+
+	@media screen and (max-width: 430px) {
+		height: $smallNavHeight;
+		background-image: url(images/menu-small.png);
+	}
+}
+
+.displayed-menu {
+	display: block !important;
+	position: absolute !important;
+	z-index: 1000;
+	right: 0 !important;
+	top: $navHeight !important;
+	padding: 0  !important;
+	background-color: $mainColor;
+
+	@media screen and (max-width: 430px) {
+		top: $smallNavHeight !important;
+	}
+
+	li {
+		display: block !important;
+		
+		a {
+			width: 1000px;
+			padding: 25px 50px !important;
+			border-top: 1px solid darken($mainColor, 10%);
+			text-align: right;
+			color: $whiteColor !important;
+
+			@media screen and (max-width: 430px) {
+				padding: 15px 30px !important;
+				font-size: 16px;
+			}
+		}
+	}
+}
+
+.title {
+	width: 50%;
+	@media screen and (max-width: 1440px) {
+		width: 70%;
+	}
+	@media screen and (max-width: 1000px) {
+		width: 90%;
+	}
+
+	h1 {
+		font-weight: 100;
+		font-size: 60px;
+		line-height: $titleLineHeight;
+
+		@media screen and (max-width: 1100px) {
+			font-size: 55px;
+		}
+
+		@media screen and (max-width: 760px) {
+			font-size: 40px;
+		}
+	}
+
+	input {
+		@include button($letterSpacing: 0.2em, $width: 190px);
+		margin-top: 40px;
+		margin-bottom: 15px;
+	}
+
+	p {
+		font-size: 14px;
+		color: $lightTextColor;
+	}
+}
+

@@ -1,0 +1,355 @@
+#main-inform {
+	width: 60%;
+	padding: 150px;
+	box-sizing: border-box;
+	overflow: hidden;
+
+	@media screen and (max-width: 1440px) {
+		padding: 120px;
+	}
+
+	@media screen and (max-width: 1200px) {
+		width: 70%;
+	}
+
+	@media screen and (max-width: 1000px) {
+		width: 90%;
+		padding: 80px 100px;
+	}
+
+	@media screen and (max-width: 760px) {
+		padding: 50px;
+	}
+
+	@media screen and (max-width: 400px) {
+		width: 100%;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		right: 0;
+		top: $headerHeight - 100px;
+		z-index: -50;
+		@include triangle(1000px, (right, bottom), (left, top));
+
+		@media screen and (max-width: 1440px) {
+			top: $headerHeight + 100px;
+		}
+		@media screen and (max-width: 1280px) {
+			top: $headerHeight + 200px;
+		}
+		@media screen and (max-width: 1000px) {
+			border-width: 200px;
+			top: $headerHeight + 350px;
+		}
+		@media screen and (max-width: 760px) {
+			top: $headerHeightSmall + 350px;
+		}
+		@media screen and (max-width: 570px) {
+			top: $headerHeightSmall + 550px;
+		}
+		// @media screen and (max-width: 400px) {
+		// 	$borderColor: lighten($mainColor, 30%);
+		// 	border-right-color: $borderColor;
+		// 	border-bottom-color: $borderColor;
+		// }
+	}
+
+	p {
+		margin-bottom: 25px;
+	}
+}
+
+.category {
+	color: $coloredText;
+	text-transform: uppercase;
+	font-size: 20px;
+	letter-spacing: 0.15em;
+	line-height: 1.5;
+	@media screen and (max-width: 430px) {
+		font-size: 16px;
+	}
+}
+
+h2 {
+	font-size: 45px;
+	font-weight: 300;
+	line-height: $titleLineHeight;
+	margin-bottom: 40px;
+
+	span {
+		color: $coloredText;
+	}
+
+	@media screen and (max-width: 1280px) {
+		font-size: 40px;
+	}
+
+	@media screen and (max-width: 760px) {
+		font-size: 35px;
+	}
+
+	@media screen and (max-width: 430px) {
+		font-size: 30px;
+	}
+}
+
+.main-features {
+	background: {
+		color: #f6f5f3;
+		image: url(images/background-elements.png);
+		repeat: no-repeat;
+		position: center;
+	}
+	padding: 150px;
+	text-align: center;
+
+	@media screen and (max-width: 1440px) {
+		padding: 150px 100px;
+	}
+
+	@media screen and (max-width: 1390px) {
+		background-image: url(images/background-elements-medium.png);
+	}
+
+	@media screen and (max-width: 1280px) {
+		padding: 130px 70px;
+	}
+
+	@media screen and (max-width: 1000px) {
+		padding: 100px 30px;
+		background-image: url(images/background-elements-small.png);
+	}
+
+	@media screen and (max-width: 760px) {
+		padding: {
+			top: 50px;
+			bottom: 0;
+		}
+		background-image: none;
+	}
+
+	@include clearfix;
+
+	h2 {
+		margin-bottom: 80px;
+		@media screen and (max-width: 760px) {
+			margin-bottom: 40px;
+		}
+	}
+}
+
+.description {
+	float: left;
+	width: 30%;
+	margin: 0 1.6%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	padding-top: 80px;
+
+	h3 {
+		font-size: 24px;
+		@media screen and (max-width: 430px) {
+			font-size: 22px;
+		}
+	}
+
+	@media screen and (max-width: 760px) {
+		float: none;
+		width: 90%;
+		margin: 50px auto;
+	}
+}
+
+@each $feature in completed, mail, portfolio {
+	.#{$feature} {
+		background-image: url(images/icon-#{$feature}.png);
+	}
+}
+
+.secondary-inform {
+	padding: 150px 10% 150px 50%;
+	background: {
+		image: url(images/responsive-example.png);
+		repeat: no-repeat;
+		position: 10% center;
+	}
+	position: relative;
+
+	@media screen and (max-width: 1440px) {
+		padding-left: 55%;
+	}
+
+	@media screen and (max-width: 1280px) {
+		background-image: url(images/responsive-example-medium.png);
+		padding: 120px 7% 120px 55%;
+	}
+
+	@media screen and (max-width: 1000px) {
+		background-position: center 10%;
+		padding: 400px 15% 100px 15%;
+	}
+
+	@media screen and (max-width: 760px) {
+		background: {
+			image: url(images/responsive-example-small.png);
+			position: center 5%;
+		}
+		padding: 250px 10% 50px 10%;
+	}
+
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: -100;
+		left: 0;
+		top: -200px;
+		@include triangle(1000px, (left, bottom), (right, top));
+
+		@media screen and (max-width: 1440px) {
+			top: -100px;
+		}
+
+		@media screen and (max-width: 1280px) {
+			top: 50px;
+			border-width: 350px;
+		}
+
+		@media screen and (max-width: 1000px) {
+			@include triangle(400px, (left, top), (right, bottom));
+			top: 0;
+		}
+
+		@media screen and (max-width: 760px) {
+			border-width: 125px;
+		}
+	}
+}
+
+#reviews {
+	background: {
+		image: url(images/background-poligonal.png);
+		repeat: no-repeat;
+	}
+	text-align: center;
+
+	@media screen and (max-width: 760px) {
+		background-image: url(images/background-poligonal-small.png);
+	}
+
+	.clients {
+		@include clearfix;
+	}
+	
+	.client {
+		float: left;
+		width: 25%;
+		margin: 100px 4%;
+
+		h3 {
+			color: $whiteColor;
+			font: {
+				weight: 300;
+				size: 22px;
+			}
+			margin-top: 20px;
+		}
+
+		.company {
+			color: $coloredText;
+			font-style: normal;
+			margin-bottom: 30px;
+		}
+
+		p {
+			color: $veryLightColor;
+			font: {
+				weight: 300;
+				style: italic;
+			}
+		}
+
+		@media screen and (max-width: 1200px) {
+			width: 29%;
+			margin: 70px 2%;
+		}
+
+		@media screen and (max-width: 760px) {
+			float: none;
+			width: 90%;
+			margin: 0 auto;
+			padding: 30px 0;
+		}
+	}
+
+	.partners {
+		padding-bottom: 70px;
+		@media screen and (max-width: 1200px) {
+			padding-bottom: 50px;
+		}
+		@media screen and (max-width: 760px) {
+			padding: 30px 12%;
+		}
+		@media screen and (max-width: 570px) {
+			padding: 30px 0;
+		}
+
+		img {
+			margin: 0 60px;
+			@media screen and (max-width: 1200px) {
+				margin: 0 30px;
+			}
+			@media screen and (max-width: 1000px) {
+				margin: 0 20px;
+				width: 100px;
+			}
+			@media screen and (max-width: 760px) {
+				margin: 20px;
+			}
+			@media screen and (max-width: 430px) {
+				margin: 10px;
+			}
+		}
+	}
+}
+
+.secondary-features {
+	text-align: center;
+	padding: 100px 0 500px 0;
+	background: {
+		image: url(images/browser-example.png);
+		repeat: no-repeat;
+		position: center bottom;
+	}
+
+	p {
+		width: 50%;
+		margin: 0 auto;
+		@media screen and (max-width: 600px) {
+			width: 80%;
+		}
+	}
+
+	@media screen and (max-width: 1280px) {
+		padding: 70px 0 440px 0;
+	}
+
+	@media screen and (max-width: 1000px) {
+		background-image: url(images/browser-example-medium.png);
+		padding-bottom: 340px;
+	}
+
+	@media screen and (max-width: 600px) {
+		background-image: url(images/browser-example-small.png);
+		padding: {
+			top: 50px;
+			bottom: 220px;
+		}
+	}
+
+	@media screen and (max-width: 380px) {
+		background-image: url(images/browser-example-extrasmall.png);
+		padding-bottom: 170px;
+	}
+}
